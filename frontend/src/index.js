@@ -1,15 +1,31 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { get, post, head } from '@exifers/fetch-utils'
+import { get } from '@exifers/fetch-utils'
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      todos: []
+    }
+  }
+
   componentDidMount() {
-    get('https://formmaker.herokuapp.com/forms/').then(console.log).catch(console.log);
+    get('/api/todos').then(todos => {
+      this.setState({
+        todos
+      })
+    })
   }
 
   render () {
     return (
-      <div>Hello</div>
+      <div>
+        <ul>{this.state.todos.map(todo => (
+          <li>{todo.text} : {todo.done.toString()}</li>
+        ))}</ul>
+      </div>
     )
   }
 }
