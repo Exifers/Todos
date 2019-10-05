@@ -12,12 +12,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    get('/api/todos/').then(todos => {
-      this.setState({
-        todos
-      })
-    })
-    post('/api/todos/', {text: Math.random().toString(36).substring(7), done: false})
+    let formData = new FormData()
+    formData.append('text', 'TOTOTOTOTO')
+    formData.append('done', 'false')
+    post('/api/todos/', formData)
   }
 
   render() {
