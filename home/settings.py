@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'rest_auth.registration',
     'rest_framework.authtoken',
     'corsheaders',
+    'django_extensions',
     'api'
 ]
 
